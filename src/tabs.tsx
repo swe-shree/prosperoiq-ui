@@ -70,7 +70,7 @@ export function Tabs({
                  "min-w-[165px] rounded-lg border border-slate-200 px-8 py-2.5 text-[18px] font-medium leading-6 transition-all duration-200",
                 isActive
                     ? "text-white"
-                    : "mborder-slate-200 bg-white text-slate-700 hover:bg-slate-50"
+                    : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
                 )}
             >
               {tab.label}
