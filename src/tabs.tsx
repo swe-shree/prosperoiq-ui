@@ -46,7 +46,7 @@ export function Tabs({
   };
 
   return (
-    <div className="w-fit rounded-2xl border border-dashed border-purple-500 px-7 py-6">
+    <div className="w-fit px-7 py-6">
       <h2 className="mb-6 text-2xl font-medium text-black">Tabs</h2>
 
       <div className="flex flex-wrap items-center gap-4">
