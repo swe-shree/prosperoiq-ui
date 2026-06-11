@@ -50,30 +50,64 @@ export function Tabs({
   };
 
   return (
-  <div className="w-fit rounded-2xl border border-dashed border-purple-500 px-7 py-6">
-    <h2 className="mb-8 text-[24px] font-medium text-black">Tabs</h2>
+    <div
+      style={{
+        width: "fit-content",
+        border: "1px dashed #A855F7",
+        borderRadius: "16px",
+        padding: "24px 28px",
+      }}
+    >
+      <h2
+        style={{
+          marginBottom: "24px",
+          fontSize: "24px",
+          fontWeight: 500,
+          color: "#000000",
+        }}
+      >
+        Tabs
+      </h2>
 
-    <div className="flex items-center gap-4">
-      {tabs.map((tab) => {
-        const isActive = activeTab === tab.value;
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "16px",
+          flexWrap: "wrap",
+        }}
+      >
+        {tabs.map((tab) => {
+          const isActive = activeTab === tab.value;
 
-        return (
-          <button
-            key={tab.value}
-            type="button"
-            onClick={() => handleTabChange(tab.value)}
-            style={{
-              backgroundColor: isActive ? theme.primary : "#FFFFFF",
-              borderColor: isActive ? theme.primary : "#E2E8F0",
-              color: isActive ? "#FFFFFF" : "#334155",
-            }}
-            className="min-w-[140px] rounded-xl border px-5 py-2.5 text-[18px] font-medium leading-6 transition-all hover:bg-slate-50"
-          >
-            {tab.label}
-          </button>
-        );
-      })}
+          return (
+            <button
+              key={tab.value}
+              type="button"
+              onClick={() => handleTabChange(tab.value)}
+              style={{
+                minWidth: "150px",
+                padding: "12px 24px",
+                borderRadius: "12px",
+                border: `1px solid ${
+                  isActive ? theme.primary : "#E2E8F0"
+                }`,
+                backgroundColor: isActive
+                  ? theme.primary
+                  : "#FFFFFF",
+                color: isActive ? "#FFFFFF" : "#334155",
+                fontSize: "18px",
+                fontWeight: 500,
+                lineHeight: "24px",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+            >
+              {tab.label}
+            </button>
+          );
+        })}
+      </div>
     </div>
-  </div>
-);
+  );
 }
