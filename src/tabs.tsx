@@ -67,7 +67,7 @@ export function Tabs({
                   : undefined
               }
               className={clsx(
-                "min-w-[165px] rounded-lg border px-8 py-2.5 text-[18px] font-medium leading-6 transition-all duration-200 outline-none focus:outline-none focus:ring-0 focus-visible:ring-0",
+                 "min-w-[165px] rounded-lg border border-slate-200 px-8 py-2.5 text-[18px] font-medium leading-6 transition-all duration-200",
                 isActive
                     ? "text-white"
                     : "mborder-slate-200 bg-white text-slate-700 hover:bg-slate-50"
