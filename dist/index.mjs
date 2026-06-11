@@ -26,7 +26,7 @@ function Tabs({
     router.push(`${pathname}?${params.toString()}`);
   };
   return /* @__PURE__ */ jsxs("div", { className: "w-fit px-7 py-6", children: [
-    /* @__PURE__ */ jsx("h2", { className: "mb-6 text-2xl font-medium text-black", children: "Tabs" }),
+    /* @__PURE__ */ jsx("h2", { className: "mb-6 text-2xl font-medium text-slate-700", children: "Tabs" }),
     /* @__PURE__ */ jsx("div", { className: "flex flex-wrap items-center gap-4", children: tabs.map((tab) => {
       const isActive = activeTab === tab.value;
       return /* @__PURE__ */ jsx(
@@ -39,9 +39,8 @@ function Tabs({
             borderColor: activeColor
           } : void 0,
           className: clsx(
-            "min-w-[165px] rounded-lg border px-8 py-2.5 text-[18px] font-medium leading-6 transition-all duration-200",
-            "focus:outline-none",
-            isActive ? "text-white" : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
+            "min-w-[165px] rounded-lg border px-8 py-2.5 text-[18px] font-medium leading-6 transition-all duration-200 outline-none focus:outline-none focus:ring-0 focus-visible:ring-0",
+            isActive ? "text-white" : "mborder-slate-200 bg-white text-slate-700 hover:bg-slate-50"
           ),
           children: tab.label
         },

@@ -47,7 +47,7 @@ export function Tabs({
 
   return (
     <div className="w-fit px-7 py-6">
-      <h2 className="mb-6 text-2xl font-medium text-black">Tabs</h2>
+      <h2 className="mb-6 text-2xl font-medium text-slate-700">Tabs</h2>
 
       <div className="flex flex-wrap items-center gap-4">
         {tabs.map((tab) => {
@@ -67,12 +67,11 @@ export function Tabs({
                   : undefined
               }
               className={clsx(
-                "min-w-[165px] rounded-lg border px-8 py-2.5 text-[18px] font-medium leading-6 transition-all duration-200",
-                "focus:outline-none",
+                "min-w-[165px] rounded-lg border px-8 py-2.5 text-[18px] font-medium leading-6 transition-all duration-200 outline-none focus:outline-none focus:ring-0 focus-visible:ring-0",
                 isActive
-                  ? "text-white"
-                  : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-              )}
+                    ? "text-white"
+                    : "mborder-slate-200 bg-white text-slate-700 hover:bg-slate-50"
+                )}
             >
               {tab.label}
             </button>
