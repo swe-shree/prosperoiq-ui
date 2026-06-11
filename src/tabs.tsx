@@ -50,38 +50,30 @@ export function Tabs({
   };
 
   return (
-    <div className="w-fit rounded-lg border border-dashed border-purple-500 px-7 py-6">
-      <h2 className="mb-8 text-[24px] font-medium text-black">Tabs</h2>
+  <div className="w-fit rounded-2xl border border-dashed border-purple-500 px-7 py-6">
+    <h2 className="mb-8 text-[24px] font-medium text-black">Tabs</h2>
 
-      <div className="flex items-center gap-10">
-        {tabs.map((tab) => {
-          const isActive = activeTab === tab.value;
+    <div className="flex items-center gap-4">
+      {tabs.map((tab) => {
+        const isActive = activeTab === tab.value;
 
-          return (
-            <button
-              key={tab.value}
-              type="button"
-              onClick={() => handleTabChange(tab.value)}
-              style={
-                isActive
-                  ? {
-                      backgroundColor: theme.primary,
-                      borderColor: theme.primary,
-                      color: "#FFFFFF",
-                    }
-                  : {
-                      backgroundColor: "#FFFFFF",
-                      borderColor: "#E2E8F0",
-                      color: "#334155",
-                    }
-              }
-              className="min-w-[178px] rounded-2xl border px-8 py-3 text-[20px] font-medium leading-6 transition-all hover:bg-slate-50"
-            >
-              {tab.label}
-            </button>
-          );
-        })}
-      </div>
+        return (
+          <button
+            key={tab.value}
+            type="button"
+            onClick={() => handleTabChange(tab.value)}
+            style={{
+              backgroundColor: isActive ? theme.primary : "#FFFFFF",
+              borderColor: isActive ? theme.primary : "#E2E8F0",
+              color: isActive ? "#FFFFFF" : "#334155",
+            }}
+            className="min-w-[140px] rounded-xl border px-5 py-2.5 text-[18px] font-medium leading-6 transition-all hover:bg-slate-50"
+          >
+            {tab.label}
+          </button>
+        );
+      })}
     </div>
-  );
+  </div>
+);
 }
