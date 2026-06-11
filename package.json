@@ -4,7 +4,9 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "prepare": "pnpm build"
@@ -20,5 +22,8 @@
     "tsup": "^8.5.1",
     "typescript": "^6.0.3"
   },
-  "packageManager": "pnpm@10.33.2"
+  "packageManager": "pnpm@10.33.2",
+  "dependencies": {
+    "clsx": "^2.1.1"
+  }
 }

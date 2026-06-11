@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import clsx from "clsx";
 
 export type ProductType = "customiq" | "gstiq";
 
@@ -16,12 +17,14 @@ export type TabsProps = {
   queryKey?: string;
 };
 
-const PRODUCT_THEME: Record<ProductType, { primary: string }> = {
+const PRODUCT_THEME: Record<ProductType, { active: string; border: string }> = {
   customiq: {
-    primary: "#863380",
+    active: "bg-[#863380] text-white",
+    border: "border-[#863380]",
   },
   gstiq: {
-    primary: "#7D1C4A",
+    active: "bg-[#7D1C4A] text-white",
+    border: "border-[#7D1C4A]",
   },
 };
 
@@ -37,8 +40,7 @@ export function Tabs({
 
   const theme = PRODUCT_THEME[product];
 
-  const activeTab =
-    searchParams.get(queryKey) || defaultTab || tabs[0]?.value;
+  const activeTab = searchParams.get(queryKey) || defaultTab || tabs[0]?.value;
 
   const handleTabChange = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -50,33 +52,10 @@ export function Tabs({
   };
 
   return (
-    <div
-      style={{
-        width: "fit-content",
-        border: "1px dashed #A855F7",
-        borderRadius: "16px",
-        padding: "24px 28px",
-      }}
-    >
-      <h2
-        style={{
-          marginBottom: "24px",
-          fontSize: "24px",
-          fontWeight: 500,
-          color: "#000000",
-        }}
-      >
-        Tabs
-      </h2>
+    <div className="w-fit rounded-2xl border border-dashed border-purple-500 px-7 py-6">
+      <h2 className="mb-6 text-2xl font-medium text-black">Tabs</h2>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "16px",
-          flexWrap: "wrap",
-        }}
-      >
+      <div className="flex flex-wrap items-center gap-4">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.value;
 
@@ -85,23 +64,12 @@ export function Tabs({
               key={tab.value}
               type="button"
               onClick={() => handleTabChange(tab.value)}
-              style={{
-                minWidth: "150px",
-                padding: "12px 24px",
-                borderRadius: "12px",
-                border: `1px solid ${
-                  isActive ? theme.primary : "#E2E8F0"
-                }`,
-                backgroundColor: isActive
-                  ? theme.primary
-                  : "#FFFFFF",
-                color: isActive ? "#FFFFFF" : "#334155",
-                fontSize: "18px",
-                fontWeight: 500,
-                lineHeight: "24px",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-              }}
+              className={clsx(
+                "min-w-[150px] rounded-xl border px-6 py-3 text-lg font-medium leading-6 transition-all duration-200",
+                isActive
+                  ? `${theme.active} ${theme.border}`
+                  : "border-slate-200 bg-white text-slate-700"
+              )}
             >
               {tab.label}
             </button>

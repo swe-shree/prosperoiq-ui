@@ -1,7 +1,9 @@
 "use strict";
+var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
   for (var name in all)
@@ -15,6 +17,14 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // src/index.ts
@@ -26,13 +36,16 @@ module.exports = __toCommonJS(index_exports);
 
 // src/tabs.tsx
 var import_navigation = require("next/navigation");
+var import_clsx = __toESM(require("clsx"));
 var import_jsx_runtime = require("react/jsx-runtime");
 var PRODUCT_THEME = {
   customiq: {
-    primary: "#863380"
+    active: "bg-[#863380] text-white",
+    border: "border-[#863380]"
   },
   gstiq: {
-    primary: "#7D1C4A"
+    active: "bg-[#7D1C4A] text-white",
+    border: "border-[#7D1C4A]"
   }
 };
 function Tabs({
@@ -52,67 +65,25 @@ function Tabs({
     params.set("product", product);
     router.push(`${pathname}?${params.toString()}`);
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(
-    "div",
-    {
-      style: {
-        width: "fit-content",
-        border: "1px dashed #A855F7",
-        borderRadius: "16px",
-        padding: "24px 28px"
-      },
-      children: [
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
-          "h2",
-          {
-            style: {
-              marginBottom: "24px",
-              fontSize: "24px",
-              fontWeight: 500,
-              color: "#000000"
-            },
-            children: "Tabs"
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
-          "div",
-          {
-            style: {
-              display: "flex",
-              alignItems: "center",
-              gap: "16px",
-              flexWrap: "wrap"
-            },
-            children: tabs.map((tab) => {
-              const isActive = activeTab === tab.value;
-              return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
-                "button",
-                {
-                  type: "button",
-                  onClick: () => handleTabChange(tab.value),
-                  style: {
-                    minWidth: "150px",
-                    padding: "12px 24px",
-                    borderRadius: "12px",
-                    border: `1px solid ${isActive ? theme.primary : "#E2E8F0"}`,
-                    backgroundColor: isActive ? theme.primary : "#FFFFFF",
-                    color: isActive ? "#FFFFFF" : "#334155",
-                    fontSize: "18px",
-                    fontWeight: 500,
-                    lineHeight: "24px",
-                    cursor: "pointer",
-                    transition: "all 0.2s ease"
-                  },
-                  children: tab.label
-                },
-                tab.value
-              );
-            })
-          }
-        )
-      ]
-    }
-  );
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "w-fit rounded-2xl border border-dashed border-purple-500 px-7 py-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { className: "mb-6 text-2xl font-medium text-black", children: "Tabs" }),
+    /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "flex flex-wrap items-center gap-4", children: tabs.map((tab) => {
+      const isActive = activeTab === tab.value;
+      return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+        "button",
+        {
+          type: "button",
+          onClick: () => handleTabChange(tab.value),
+          className: (0, import_clsx.default)(
+            "min-w-[150px] rounded-xl border px-6 py-3 text-lg font-medium leading-6 transition-all duration-200",
+            isActive ? `${theme.active} ${theme.border}` : "border-slate-200 bg-white text-slate-700"
+          ),
+          children: tab.label
+        },
+        tab.value
+      );
+    }) })
+  ] });
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
