@@ -59,29 +59,26 @@ function Tabs({
     params.set("product", product);
     router.push(`${pathname}?${params.toString()}`);
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "w-fit px-7 py-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", { className: "mb-6 text-2xl font-medium text-slate-700", children: "Tabs" }),
-    /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "flex flex-wrap items-center gap-4", children: tabs.map((tab) => {
-      const isActive = activeTab === tab.value;
-      return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
-        "button",
-        {
-          type: "button",
-          onClick: () => handleTabChange(tab.value),
-          style: isActive ? {
-            backgroundColor: activeColor,
-            borderColor: activeColor
-          } : void 0,
-          className: (0, import_clsx.default)(
-            "min-w-[165px] cursor-pointer rounded-lg border border-slate-200 px-8 py-3 text-[16px] font-medium leading-6 transition-all duration-200",
-            isActive ? "text-white" : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-          ),
-          children: tab.label
-        },
-        tab.value
-      );
-    }) })
-  ] });
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "w-fit py-2", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "flex flex-wrap items-center gap-4", children: tabs.map((tab) => {
+    const isActive = activeTab === tab.value;
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+      "button",
+      {
+        type: "button",
+        onClick: () => handleTabChange(tab.value),
+        style: isActive ? {
+          backgroundColor: activeColor,
+          borderColor: activeColor
+        } : void 0,
+        className: (0, import_clsx.default)(
+          "min-w-[165px] cursor-pointer rounded-lg border border-slate-200 px-8 py-3 text-[16px] font-medium leading-6 transition-all duration-200",
+          isActive ? "text-white" : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
+        ),
+        children: tab.label
+      },
+      tab.value
+    );
+  }) }) });
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

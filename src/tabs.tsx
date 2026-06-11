@@ -45,39 +45,37 @@ export function Tabs({
     router.push(`${pathname}?${params.toString()}`);
   };
 
-  return (
-    <div className="w-fit px-7 py-6">
-      <h2 className="mb-6 text-2xl font-medium text-slate-700">Tabs</h2>
+ return (
+  <div className="w-fit py-2">
+    <div className="flex flex-wrap items-center gap-4">
+      {tabs.map((tab) => {
+        const isActive = activeTab === tab.value;
 
-      <div className="flex flex-wrap items-center gap-4">
-        {tabs.map((tab) => {
-          const isActive = activeTab === tab.value;
-
-          return (
-            <button
-              key={tab.value}
-              type="button"
-              onClick={() => handleTabChange(tab.value)}
-              style={
-                isActive
-                  ? {
-                      backgroundColor: activeColor,
-                      borderColor: activeColor,
-                    }
-                  : undefined
-              }
-              className={clsx(
-                 "min-w-[165px] cursor-pointer rounded-lg border border-slate-200 px-8 py-3 text-[16px] font-medium leading-6 transition-all duration-200",
-                isActive
-                    ? "text-white"
-                    : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
-                )}
-            >
-              {tab.label}
-            </button>
-          );
-        })}
-      </div>
+        return (
+          <button
+            key={tab.value}
+            type="button"
+            onClick={() => handleTabChange(tab.value)}
+            style={
+              isActive
+                ? {
+                    backgroundColor: activeColor,
+                    borderColor: activeColor,
+                  }
+                : undefined
+            }
+            className={clsx(
+              "min-w-[165px] cursor-pointer rounded-lg border border-slate-200 px-8 py-3 text-[16px] font-medium leading-6 transition-all duration-200",
+              isActive
+                ? "text-white"
+                : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
+            )}
+          >
+            {tab.label}
+          </button>
+        );
+      })}
     </div>
-  );
+  </div>
+);
 }
