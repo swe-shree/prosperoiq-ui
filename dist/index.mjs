@@ -1,3 +1,5 @@
+import "./styles.css";
+
 // src/tabs.tsx
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import clsx from "clsx";
