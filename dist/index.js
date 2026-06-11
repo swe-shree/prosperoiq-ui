@@ -71,7 +71,7 @@ function Tabs({
           borderColor: activeColor
         } : void 0,
         className: (0, import_clsx.default)(
-          "cursor-pointer rounded-lg border border-slate-200 px-8 py-3 text-[16px] font-medium leading-6 transition-all duration-200",
+          "h-[42px] w-[134px] cursor-pointer rounded-lg border border-slate-200 px-8 py-3 text-[16px] font-medium leading-6 transition-all duration-200",
           isActive ? "text-white" : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
         ),
         children: tab.label
