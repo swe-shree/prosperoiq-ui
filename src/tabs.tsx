@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import clsx from "clsx";
 
 export type ProductType = "customiq" | "gstiq";
 
@@ -17,14 +16,12 @@ export type TabsProps = {
   queryKey?: string;
 };
 
-const PRODUCT_THEME: Record<ProductType, { active: string; border: string }> = {
+const PRODUCT_THEME: Record<ProductType, { activeClass: string }> = {
   customiq: {
-    active: "bg-[#863380] text-white",
-    border: "border-[#863380]",
+    activeClass: "border-[#863380] bg-[#863380] text-white",
   },
   gstiq: {
-    active: "bg-[#7D1C4A] text-white",
-    border: "border-[#7D1C4A]",
+    activeClass: "border-[#7D1C4A] bg-[#7D1C4A] text-white",
   },
 };
 
@@ -52,7 +49,7 @@ export function Tabs({
   };
 
   return (
-    <div className="w-fit rounded-2xl border border-dashed border-purple-500 px-7 py-6">
+    <div className="w-fit rounded-2xl border border-dashed border-[#A855F7] px-7 py-6">
       <h2 className="mb-6 text-2xl font-medium text-black">Tabs</h2>
 
       <div className="flex flex-wrap items-center gap-4">
@@ -64,12 +61,11 @@ export function Tabs({
               key={tab.value}
               type="button"
               onClick={() => handleTabChange(tab.value)}
-              className={clsx(
-                "min-w-[150px] rounded-xl border px-6 py-3 text-lg font-medium leading-6 transition-all duration-200",
+              className={`min-w-[150px] rounded-xl border px-6 py-3 text-lg font-medium leading-6 transition-all duration-200 cursor-pointer ${
                 isActive
-                  ? `${theme.active} ${theme.border}`
-                  : "border-slate-200 bg-white text-slate-700"
-              )}
+                  ? theme.activeClass
+                  : "border-[#E2E8F0] bg-white text-[#334155]"
+              }`}
             >
               {tab.label}
             </button>

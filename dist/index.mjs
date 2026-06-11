@@ -1,15 +1,12 @@
 // src/tabs.tsx
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import clsx from "clsx";
 import { jsx, jsxs } from "react/jsx-runtime";
 var PRODUCT_THEME = {
   customiq: {
-    active: "bg-[#863380] text-white",
-    border: "border-[#863380]"
+    activeClass: "border-[#863380] bg-[#863380] text-white"
   },
   gstiq: {
-    active: "bg-[#7D1C4A] text-white",
-    border: "border-[#7D1C4A]"
+    activeClass: "border-[#7D1C4A] bg-[#7D1C4A] text-white"
   }
 };
 function Tabs({
@@ -29,7 +26,7 @@ function Tabs({
     params.set("product", product);
     router.push(`${pathname}?${params.toString()}`);
   };
-  return /* @__PURE__ */ jsxs("div", { className: "w-fit rounded-2xl border border-dashed border-purple-500 px-7 py-6", children: [
+  return /* @__PURE__ */ jsxs("div", { className: "w-fit rounded-2xl border border-dashed border-[#A855F7] px-7 py-6", children: [
     /* @__PURE__ */ jsx("h2", { className: "mb-6 text-2xl font-medium text-black", children: "Tabs" }),
     /* @__PURE__ */ jsx("div", { className: "flex flex-wrap items-center gap-4", children: tabs.map((tab) => {
       const isActive = activeTab === tab.value;
@@ -38,10 +35,7 @@ function Tabs({
         {
           type: "button",
           onClick: () => handleTabChange(tab.value),
-          className: clsx(
-            "min-w-[150px] rounded-xl border px-6 py-3 text-lg font-medium leading-6 transition-all duration-200",
-            isActive ? `${theme.active} ${theme.border}` : "border-slate-200 bg-white text-slate-700"
-          ),
+          className: `min-w-[150px] rounded-xl border px-6 py-3 text-lg font-medium leading-6 transition-all duration-200 cursor-pointer ${isActive ? theme.activeClass : "border-[#E2E8F0] bg-white text-[#334155]"}`,
           children: tab.label
         },
         tab.value
