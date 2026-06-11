@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import clsx from "clsx";
 
 export type ProductType = "customiq" | "gstiq";
 
@@ -16,12 +17,12 @@ export type TabsProps = {
   queryKey?: string;
 };
 
-const PRODUCT_THEME: Record<ProductType, { activeClass: string }> = {
+const PRODUCT_THEME: Record<ProductType, { activeClassName: string }> = {
   customiq: {
-    activeClass: "border-[#863380] bg-[#863380] text-white",
+    activeClassName: "border-[#863380] bg-[#863380]",
   },
   gstiq: {
-    activeClass: "border-[#7D1C4A] bg-[#7D1C4A] text-white",
+    activeClassName: "border-[#7D1C4A] bg-[#7D1C4A]",
   },
 };
 
@@ -37,7 +38,8 @@ export function Tabs({
 
   const theme = PRODUCT_THEME[product];
 
-  const activeTab = searchParams.get(queryKey) || defaultTab || tabs[0]?.value;
+  const activeTab =
+    searchParams.get(queryKey) || defaultTab || tabs[0]?.value;
 
   const handleTabChange = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -49,8 +51,12 @@ export function Tabs({
   };
 
   return (
-    <div className="w-fit rounded-2xl border border-dashed border-[#A855F7] px-7 py-6">
-      <h2 className="mb-6 text-2xl font-medium text-black">Tabs</h2>
+    <div
+      className="w-fit rounded-2xl border border-dashed border-purple-500 px-7 py-6"
+    >
+      <h2 className="mb-6 text-2xl font-medium text-black">
+        Tabs
+      </h2>
 
       <div className="flex flex-wrap items-center gap-4">
         {tabs.map((tab) => {
@@ -61,11 +67,12 @@ export function Tabs({
               key={tab.value}
               type="button"
               onClick={() => handleTabChange(tab.value)}
-              className={`min-w-[150px] rounded-xl border px-6 py-3 text-lg font-medium leading-6 transition-all duration-200 cursor-pointer ${
+              className={clsx(
+                "min-w-[150px] cursor-pointer rounded-xl border px-6 py-3 text-lg font-medium leading-6 transition-all duration-200",
                 isActive
-                  ? theme.activeClass
-                  : "border-[#E2E8F0] bg-white text-[#334155]"
-              }`}
+                  ? clsx(theme.activeClassName, "text-white")
+                  : "border-slate-200 bg-white text-slate-700",
+              )}
             >
               {tab.label}
             </button>
@@ -75,3 +82,4 @@ export function Tabs({
     </div>
   );
 }
+
