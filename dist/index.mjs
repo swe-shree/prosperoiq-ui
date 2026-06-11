@@ -37,7 +37,7 @@ function Tabs({
           borderColor: activeColor
         } : void 0,
         className: clsx(
-          "cursor-pointer rounded-lg border border-slate-200 px-6 h-[42px] text-[16px] font-medium transition-all duration-200 flex items-center justify-center",
+          "cursor-pointer rounded-lg border border-slate-200 px-6 py-2.5 text-[16px] font-medium transition-all duration-200 flex items-center justify-center",
           isActive ? "text-white" : "bg-white text-slate-700 hover:bg-slate-50"
         ),
         children: tab.label
